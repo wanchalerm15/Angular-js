@@ -1,0 +1,26 @@
+<div class="row" style="margin-top:5px;">
+    <div class="col-md-1">
+        <p class="text-right">
+            <a href="#/">ย้อนกลับ</a>
+        </p>
+    </div>
+    <div class="col-md-11">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>สินค้า : <span data-ng-bind="show_product.name"></span></h4>
+            </div>
+            <div class="panel-body">
+                <dl>
+                    <dt style="text-decoration:underline;">ชื่อสินค้า : <span data-ng-bind="show_product.name"></span></dt>
+                    <dd><b>จำนวนที่มี :</b> <span data-ng-bind="show_product.unit"></span> ชิ้น</dd>
+                    <dd><b>ราคาสินค้า :</b> <span data-ng-bind="show_product.price"></span> บาท</dd>   
+                    <hr>
+                    <dd ng-if="show_product.image"><img class="image-product" data-ng-src="{{show_product.image}}"></dd>
+                    <dd ng-if="!show_product.image">ไม่มีภาพสินค้า...</dd>
+                    <hr>
+                    <dd><b>รายละเอียดสินค้า :</b> <span data-ng-bind="show_product.detail"></span> บาท</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

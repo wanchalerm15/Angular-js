@@ -1,0 +1,12 @@
+#add-product .form-control{
+    margin-bottom: 7px;
+}
+#edit-Product{
+    margin-top: 5px;
+}
+img.image-product{
+    width: 60%;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+}
