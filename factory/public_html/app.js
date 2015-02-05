@@ -3,11 +3,13 @@ angular.module('app',['ngRoute'])
     $routeProvider
     .when('/',{
         templateUrl:'webpage/main.html',
-        controller:'homeController'
+        controller:'homeController',
+        title:'หน้าแรก - แสดงข้อมูล'
     })
     .when('/addData',{
         templateUrl:'webpage/add.html',
-        controller:'homeController'
+        controller:'homeController',
+        title:'เพิ่มข้อมูลเว็บ Developer'
     })
     .otherwise({
         redirectTo:"/"
@@ -24,6 +26,7 @@ angular.module('app',['ngRoute'])
 .factory('devData',function(){
     var devData = {};
     var Data = [];
+    this.haha = 10001;
     devData.setData = function(data){
         Data = data;
     };
@@ -32,7 +35,13 @@ angular.module('app',['ngRoute'])
     };
     return devData;
 })
-.controller('homeController',function($scope,develop,devData){
+.service('myService',function($http,devUrl){
+    this.intro = "Hello World !";
+    this.outro = "Good Bye !";
+})
+.controller('homeController',function($scope,develop,devData,myService){
+    console.log(myService);
+    
     if(devData.getData().length === 0){
         develop.developView().success(function(res){
             $scope.develop = res;
@@ -49,6 +58,13 @@ angular.module('app',['ngRoute'])
     };
     /*-----------------------------------------------*/
     $scope.editData = function(){
-    
+
     };
-});
+})
+.run(['$rootScope', '$route', function($rootScope, $route) {
+    $rootScope.$on('$routeChangeSuccess', function(newVal, oldVal) {
+        if (oldVal !== newVal) {
+            document.title = $route.current.title;
+        }
+    });
+}]);;
