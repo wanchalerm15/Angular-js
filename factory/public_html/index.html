@@ -1,0 +1,30 @@
+<!doctype html>
+<html data-ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>การใช้งาน Factory</title>
+        <style>
+            *{
+                box-sizing:border-box;
+            }
+            .table{
+                width:700px;
+                border-collapse: collapse;
+            }
+            .table td{padding: 5px;}
+            ul.form{list-style:none;padding: 0;margin: 0;}
+            ul.form > li{padding: 3px;}
+        </style>
+    </head>
+    <body>
+        <div>
+            <h3>การใช้งาน Factory</h3>
+            <hr>
+            <div data-ng-view=""></div>
+        </div>
+        <!--Javasctipt-->
+        <script src="library/angular.js/angular.min.js"></script>
+        <script src="library/angular.js/angular-route.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

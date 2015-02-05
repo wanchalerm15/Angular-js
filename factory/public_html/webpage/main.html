@@ -1,0 +1,16 @@
+<h3>File Page Main.html</h3>
+<br>
+<table class="table" border="1">
+    <tr style="font-weight:bold;background-color:#e0e0e0;">
+        <td>id #</td>
+        <td>Diveloper Name #</td>
+        <td>Developer Url #</td>
+    </tr>
+    <tr data-ng-repeat="dev in develop">
+        <td data-ng-bind="$index+1"></td>
+        <td data-ng-bind="dev.display"></td>
+        <td><a href="{{dev.url}}" data-ng-bind="dev.url" target="_blank"></a></td>
+    </tr>
+</table>
+<br>
+<a href="#/addData">Add Data</a>

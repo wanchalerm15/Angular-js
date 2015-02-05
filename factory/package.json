@@ -1,0 +1,8 @@
+{
+  "name": "factory-Service",
+  "version": "1.0.0",
+  "private": "true",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
