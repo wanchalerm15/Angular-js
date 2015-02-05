@@ -5,11 +5,13 @@
         <td>id #</td>
         <td>Diveloper Name #</td>
         <td>Developer Url #</td>
+        <td>Edits #</td>
     </tr>
-    <tr data-ng-repeat="dev in develop">
+    <tr data-ng-repeat="devs in develop">
         <td data-ng-bind="$index+1"></td>
-        <td data-ng-bind="dev.display"></td>
-        <td><a href="{{dev.url}}" data-ng-bind="dev.url" target="_blank"></a></td>
+        <td data-ng-bind="devs.display"></td>
+        <td><a href="{{devs.url}}" data-ng-bind="devs.url" target="_blank"></a></td>
+        <td><a href="#/edit/{{$index}}">Edit</a></td>
     </tr>
 </table>
 <br>

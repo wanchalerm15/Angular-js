@@ -4,26 +4,59 @@
         <meta charset="utf-8">
         <title data-ng-title="">การใช้งาน Factory</title>
         <style>
-            *{
-                box-sizing:border-box;
-            }
-            .table{
-                width:700px;
-                border-collapse: collapse;
-            }
-            .table td{padding: 5px;}
-            ul.form{list-style:none;padding: 0;margin: 0;}
-            ul.form > li{padding: 3px;}
+            *{box-sizing:border-box;}
+            .table{width:100%;border-collapse: collapse;}
+            .table td{border-bottom:solid 1px #e4e4e4;padding: 5px 4px 2px 4px;}
+            .container{max-width: 940px;min-width: 800px;margin: 0 auto;}
+            .col{padding: 1%;border: solid 1px #e0e0e0;}
+            .side{width: 29%;float: left;}
+            .main{width: 69%;float: right;padding: 1px;border: none;}
+            input.text{width: 100%;padding: 3px 10px;}
+            input.btn{width: 50%;padding: 3px 10px;display: block;margin: auto;margin-top: 10px;}
         </style>
     </head>
     <body>
-        <div>
-            <h3>การใช้งาน Factory</h3>
-            <hr>
-            <div data-ng-view=""></div>
+        <div class="container" data-ng-controller="productController">
+            <div class="col side">
+                <form ng-submit="saveProductS()">
+                    <fieldset>
+                        <legend>เพิ่ม,แก้ไขสินค้า</legend>
+                        <input type="hidden" id="id" data-ng-model="new_product.index">
+                        <lable for="name">Product Name : </lable>
+                        <input type="text" id="name" class="text" placeholder="ชื่อสินค้า"  data-ng-model="new_product.name" required>
+                        <lable for="unit">Product Unit : </lable>
+                        <input type="number" id="unit" class="text" placeholder="จำนวนสินค้า"  data-ng-model="new_product.unit">
+                        <lable for="price">Product Price : </lable>
+                        <input type="number" id="price" class="text" placeholder="ราคาสินค้า"  data-ng-model="new_product.price">
+                        <input type="submit" value="Ok" class="btn">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col main">
+                <table class="table">
+                    <tr style="font-weight:bold;">
+                        <td>Product Id</td>
+                        <td>Product Name</td>
+                        <td>Product Unit</td>
+                        <td>Product Price</td>
+                        <td>Edits</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr  data-ng-if="products.length === 0">
+                        <td colspan="6">No Product Data...</td>
+                    </tr>
+                    <tr data-ng-repeat="p in products">
+                        <td data-ng-bind="p.id"></td>
+                        <td data-ng-bind="p.name"></td>
+                        <td data-ng-bind="p.unit"></td>
+                        <td data-ng-bind="p.price"></td>
+                        <td><a href="" ng-click="editProduct($index)">Edit</a></td>
+                        <td><a href="" ng-click="deleteProduct($index)">Delete</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <!--Javasctipt-->
-        <script src="library/jquery/jquery-2.0.3.min.js"></script>
         <script src="library/angular.js/angular.min.js"></script>
         <script src="library/angular.js/angular-route.min.js"></script>
         <script src="app.js"></script>
