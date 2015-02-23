@@ -1,0 +1,11 @@
+<form ng-submit="AddNames()">
+    <input type="text" data-ng-model="name.id">
+    <input type="text" data-ng-model="name.name">
+    <input type="submit" value="Add Data">
+    <input type="button" value="Close" onclick="location='#/'">
+</form>
+<hr>
+<ul data-ng-repeat="s in studens" style="border-bottom:solid 1px #d0d0d0;padding-bottom:15px;">
+    <li>{{s.id}}</li>
+    <li>{{s.name}}</li>
+</ul>
