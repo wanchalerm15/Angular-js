@@ -1,0 +1,110 @@
+<!doctype html>
+<html data-ng-app="app">
+    <head>
+        <meta charset="utf-8"> 
+        <title>ฝึกทำ Data Display แบบ Pinterest</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="highlight/styles/hybrid.css">
+        <style>
+            div.list{
+                background-color: #7afcde;
+                height: 200px;
+                margin: 10px 0;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bolder;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" data-ng-controller="xxx">
+            <h3>ทำ รายการ แบบ Pinterest</h3>
+            <hr>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="list" data-ng-repeat="d in datalist1" data-ng-bind="d.name"
+                         style="height:{{d.w}}px;line-height:{{d.w}}px;"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="list" data-ng-repeat="d in datalist2" data-ng-bind="d.name"
+                         style="height:{{d.w}}px;line-height:{{d.w}}px;"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="list" data-ng-repeat="d in datalist3" data-ng-bind="d.name"
+                         style="height:{{d.w}}px;line-height:{{d.w}}px;"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="list" data-ng-repeat="d in datalist4" data-ng-bind="d.name"
+                         style="height:{{d.w}}px;line-height:{{d.w}}px;"></div>
+                </div>
+            </div>
+        </div>
+        <!--Javascript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="highlight/highlight.pack.js"></script>
+        <script>
+            angular.module('app',[])
+            .controller('xxx',function ($scope){
+                var data_element  = [
+                    {name:'element 1',w:250},
+                    {name:'element 2',w:450},
+                    {name:'element 3',w:250},
+                    {name:'element 4',w:550},
+                    {name:'element 5',w:250},
+                    {name:'element 6',w:150},
+                    {name:'element 7',w:250},
+                    {name:'element 8',w:350},
+                    {name:'element 9',w:450},
+                    {name:'element 10',w:450},
+                    {name:'element 11',w:250},
+                    {name:'element 12',w:250},
+                    {name:'element 13',w:450},
+                    {name:'element 14',w:450},
+                    {name:'element 15',w:700},
+                    {name:'element 16',w:150},
+                    {name:'element 17',w:350},
+                    {name:'element 18',w:150},
+                ];
+                var col_1=[];
+                var col_2=[];
+                var col_3=[];
+                var col_4=[];
+                var data_length = data_element.length/4;
+                angular.forEach(data_element,function(data,index){
+                    if(col_1.length < data_length){
+                        col_1.push(data_element[((index*4)+1)-1]);                                            
+                    }
+                    if(col_2.length < data_length){
+                        col_2.push(data_element[((index*4)+2)-1]);
+                    }
+                    if(col_3.length < data_length){
+                        col_3.push(data_element[((index*4)+3)-1]);
+                    }
+                    if(col_4.length < data_length){
+                        col_4.push(data_element[((index*4)+4)-1]);
+                    }
+                });
+                xcut(col_1);
+                xcut(col_2);
+                xcut(col_3);
+                xcut(col_4);
+                $scope.datalist1 = col_1;
+                $scope.datalist2 = col_2;
+                $scope.datalist3 = col_3;
+                $scope.datalist4 = col_4;
+                /// สูตรการทำแถวแบบ Pinterest 
+                // Column = ((index x จำนวนคอลัมน์)+คอลัมน์ที่อยากให้อยู่)-1(ถ้า indexเริ่มที่ 0)
+            });
+            function xcut(array){
+                if(array[(array.length-1)]===undefined){
+                    array.pop();
+                }
+            }
+        </script>
+    </body>
+</html>
