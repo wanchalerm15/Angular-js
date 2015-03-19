@@ -1,0 +1,14 @@
+  $('#selector').bind('keypress', function (e) {
+                    var val = $(this).val();
+                    val.split();
+                    var num = val.indexOf(".");
+                    if (num >= 0) {
+                        if (num !== 0) {
+                            return (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) ? false : true;
+                        } else {
+                            $(this).val("0.");
+                        }
+                    } else {
+                        return (e.which !== 8 && e.which !== 0 && e.which !== 46 && (e.which < 48 || e.which > 57)) ? false : true;
+                    }
+                });
