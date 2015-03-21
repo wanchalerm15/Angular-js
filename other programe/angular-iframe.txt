@@ -1,0 +1,26 @@
+﻿var app = angular.module('plunker', ['ngSanitize']);
+
+app.controller('MainCtrl', function($scope, $sce) {
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
+
+  $scope.movie = {src:"http://www.youtube.com/embed/Lx7ycjC8qjE", title:"Egghead.io AngularJS Binding"};
+});
+
+
+
+สูตรการทำ ให้ Element Fixed ตาม Scrolll เคลื่อนที่
+var offset_top = $("ชื่อ Element ที้ต้องการให้ Fixed").offset().top;
+$(window).scroll(function () {
+	var selector = $("ชื่อ Element ที้ต้องการให้ Fixed").height() + offset_top;
+	var height = $(this).height() / 1.13;
+	var scrollUse = (selector - height);
+	var scrollTop = $(this).scrollTop();
+	var fixed = parseInt((scrollTop - scrollUse));
+	if (scrollTop > scrollUse) {
+		$("ชื่อ Element ที้ต้องการให้ Fixed").css('top', fixed);
+	} else {
+		$("ชื่อ Element ที้ต้องการให้ Fixed").css('top', 0);
+	}
+});
