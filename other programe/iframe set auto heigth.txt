@@ -1,0 +1,12 @@
+สวัสดีครับ วันนี้มีเทคนิคดีๆ มาแนะนำกันครับ บางคนที่ใช้ iFrame <iframe> </iframe> ในหน้าเว็บแล้ว พบว่าหน้าใน iFrame มีเนื้อหาที่น้อยกว่าความสูงของ iFrame ที่เรากำหนดเอาไว้ ทำให้เกิดช่องว่างอาจทำให้ไม่สวยงาม บทความนี้จะมาบอกเทคนิคการทำให้ ปรับความสูงของ iFrame ให้พอดีกับหน้าใน iFrame โดยอัตโนมัติ เพื่อความสวยงามของหน้าเว็บครับ 
+/*-----------------------------------------------*/
+<script type="text/javascript">
+    $(function() {
+       resizeframe();
+    });
+ 
+    function resizeframe() {
+       document.getElementById('iframe-id').style.height =
+       document.getElementById('iframe-id').contentWindow.document.body.offsetHeight + 'px';
+    }
+</script>
